@@ -1,0 +1,23 @@
+<!-- display_table.html -->
+{% if message %}
+<p>{{ message }}</p>
+{% else %}
+<table>
+  <thead>
+    <tr>
+      <th>Character Name</th>
+      <th>Homeworld</th>
+      <th>Climate</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for character in characters %}
+    <tr>
+      <td>{{ character.name }}</td>
+      <td>{{ character.homeworld.name }}</td>
+      <td>{{ character.homeworld.climate }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}

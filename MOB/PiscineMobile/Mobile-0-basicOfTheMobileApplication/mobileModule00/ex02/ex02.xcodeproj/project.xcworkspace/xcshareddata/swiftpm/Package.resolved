@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "expression",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/nicklockwood/Expression",
+      "state" : {
+        "revision" : "81e8f21b576ac2cd211ab42a7396fdf7b66f02b4",
+        "version" : "0.13.8"
+      }
+    }
+  ],
+  "version" : 2
+}

@@ -1,0 +1,16 @@
+{% extends 'publish/base.html' %}
+{% load i18n %}
+
+{% block content %}
+    <h1>{% trans "new article publish" %}</h1>
+    {% if user.is_authenticated %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">{% trans "publish" %}</button>
+    </form>
+    <a href="{% url 'publications' %}">{% trans "back to publication list" %}</a>
+    {% else %}
+    <p>{% trans "you need to login to publish new article" %}</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'accounts/base.html' %}
+
+{% block content %}
+<h1>Homepage</h1>
+
+{% if tips %}
+<!-- 팁 목록 -->
+{% for tip in tips %}
+    <div>
+        <p>{{ tip.content }}</p>
+        <small>Writer: {{ tip.author }}, Date: {{ tip.date }}</small>
+        <p>Upvote: <span id="upvote-count-{{ tip.id }}">{{ tip.upvotes.count }}</span>, Downvote: <span id="downvote-count-{{ tip.id }}">{{ tip.downvotes.count }}</span></p>
+        {% if user.is_authenticated %}
+        
+        <!-- 업보트 -->
+        <form method="post" action="{% url 'upvote' tip.id %}">
+            {% csrf_token %}
+            <button type="submit" name="upvote">Upvote</button>
+        </form>
+        
+        <!-- 다운보트 -->
+        {%if tip.author == user or user in tip.can_downvote.all or can_downvote%}
+        <form method="post" action="{% url 'downvote' tip.id %}">
+            {% csrf_token %}
+            <button type="submit" name="downvote">Downvote</button>
+        </form>
+        {% endif %}
+        
+        {% if tip.author == user or user in tip.can_delete.all or can_delete%}
+        <form method="post" action="{% url 'delete' tip.id %}">
+            {% csrf_token %}
+            <button type="submit">Delete</button>
+        </form>
+        {% endif %}
+        {% endif %}
+    </div>
+{% endfor %}
+{% else %}
+    <p>You need login want to see Tips.</p>
+{% endif %}
+
+{% if user.is_authenticated %}
+    <form method="post" action="{% url 'home' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Tip append</button>
+    </form>
+{% endif %}
+
+{% endblock %}

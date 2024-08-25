@@ -1,0 +1,32 @@
+<!-- FILEPATH: /Users/min-yeongjae/djangoPiscine/SQL/ex02/templates/ex02/display.html -->
+{% if movies %}
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Episode Number</th>
+      <th>Opening Crawl</th>
+      <th>Director</th>
+      <th>Producer</th>
+      <th>Release Date</th>
+      <th>Created</th>
+      <th>Updated</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for movie in movies %}
+    <tr>
+      <td>{{ movie.0 }}</td>
+      <td>{{ movie.1 }}</td>
+      <td>{{ movie.2 }}</td>
+      <td>{{ movie.3 }}</td>
+      <td>{{ movie.4 }}</td>
+      <td>{{ movie.5 }}</td>
+      <td>{{ movie.6 }}</td>
+      <td>{{ movie.7 }}</td>
+      <td>{{ movie.8 }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %} No data available {% endif %}

@@ -1,0 +1,11 @@
+mkdir -p data/db/pg_commit_ts
+mkdir -p data/db/pg_notify
+mkdir -p data/db/pg_replslot
+mkdir -p data/db/pg_snapshots
+mkdir -p data/db/pg_stat
+mkdir -p data/db/pg_tblspc
+mkdir -p data/db/pg_twophase 
+mkdir -p data/db/pg_wal/archive_status 
+mkdir -p data/db/pg_wal/archive_status 
+mkdir -p data/db/pg_logical/snapshots
+mkdir -p data/db/pg_logical/mappings

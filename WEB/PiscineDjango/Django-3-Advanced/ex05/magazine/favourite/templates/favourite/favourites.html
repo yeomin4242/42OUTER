@@ -1,0 +1,26 @@
+{% extends 'publish/base.html' %}
+{% load i18n %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>{% trans "my favourite article" %}</title>
+</head>
+<body>
+    <h1>{% trans "my favourite article" %}</h1>
+    {% if user.is_authenticated %}
+    <ul>
+        {% for favourite in favourites %}
+        <li><a href="{% url 'article_detail' favourite.article.id %}">{{ favourite.article.title }}</a></li>
+        {% empty %}
+        <li>{% trans "no favourite article" %}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>{% trans "please login to see your favourite articles" %}</p>
+    {% endif %}
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Characters and their Homeworlds</title>
+  </head>
+  <body>
+    {% if characters %}
+    <table>
+      <thead>
+        <tr>
+          <th>Character Name</th>
+          <th>Homeworld</th>
+          <th>Climate</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for character in characters %}
+        <tr>
+          <td>{{ character.0 }}</td>
+          <!-- character.name 대신 character.0 사용 -->
+          <td>{{ character.1 }}</td>
+          <!-- character.homeworld.name 대신 character.1 사용 -->
+          <td>{{ character.2 }}</td>
+          <!-- character.homeworld.climate 대신 character.2 사용 -->
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p>No data available</p>
+    <!-- message 변수 대신 직접 문자열 입력 -->
+    {% endif %}
+  </body>
+</html>

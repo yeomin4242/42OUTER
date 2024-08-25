@@ -1,0 +1,73 @@
+html,
+body,
+:root {
+  font-family: "Pretendard", system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  font-weight: 400;
+
+  --brand-main-1: #ff8484;
+  --brand-sub-1: #ffb4b4;
+  --brand-sub-2: #fff3f2;
+
+  --line-gray-1: #858486;
+  --line-gray-2: #a9a9a9;
+  --line-gray-3: #c5c5c5;
+
+  --status-error-1: #d72442;
+  --status-error-2: #ff4040;
+
+  color-scheme: light dark;
+  /* color: rgba(255, 255, 255, 0.87); */
+  color: #000;
+  /* background-color: #242424; */
+  background-color: #fff;
+
+  --main-font: "Margarine-Regular";
+  --gray: #575756;
+  --light-gray: #999999;
+  --vermilion: #e94057;
+  --light-vermilion: #ff4b4b;
+  --white: #fff;
+  --black: #000;
+  --msg-view: #fcb8ba;
+  --tag-stroke: #e8e6ea;
+  --blue: #3369ff;
+  --light-blue: #d1eaff;
+  --online: #2aac7a;
+  --offline: #d22727;
+
+  /* --neon-text-color: #f40; */
+  --neon-border-color: #2aac7a;
+
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  /* NOTE  : 부모에서 자간  */
+  line-height: 1.4;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; */
+}
+
+@font-face {
+  font-family: "Margarine-Regular";
+  src: url("./assets/font/Margarine-Regular.ttf") format("truetype");
+}
+
+/* 400부터 regular */
+@font-face {
+  font-family: "Pretendard";
+  src: url("./assets/font/Pretendard.ttf") format("truetype");
+}

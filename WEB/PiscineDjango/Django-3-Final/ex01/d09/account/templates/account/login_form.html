@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <form id="loginForm">
+        Username: <input type="text" name="username"><br>
+        Password: <input type="password" name="password"><br>
+        <input type="submit" value="Login">
+    </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+    $("#loginForm").submit(function(event){
+        event.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "/account/login/",
+            data: {
+                username: $("input[name='username']").val(),
+                password: $("input[name='password']").val(),
+                csrfmiddlewaretoken: '{{ csrf_token }}'
+            },
+            success: function(data){
+                if(data.success){
+                    location.reload();
+                }else{
+                    alert(data.error);
+                }
+            }
+        });
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>my favourite article</title>
+</head>
+<body>
+    <h1>my favourite article</h1>
+    <ul>
+        {% for favourite in favourites %}
+        <li><a href="{% url 'article_detail' favourite.article.id %}">{{ favourite.article.title }}</a></li>
+        {% empty %}
+        <li>no favourite article</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

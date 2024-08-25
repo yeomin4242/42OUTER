@@ -1,0 +1,21 @@
+<!-- templates/ex01/base.html -->
+<!DOCTYPE html>
+<html>
+  {% load static %}
+  <head>
+    {% block title %}
+    <title>템플릿 엔진</title>
+    {% endblock %} {% block style %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'ex01/style1.css' %}"
+    />
+    {% endblock %}
+  </head>
+  <body>
+    {% include 'ex01/nav.html' %} {% block content %}
+    <!-- 페이지 내용 -->
+    {% endblock %}
+  </body>
+</html>

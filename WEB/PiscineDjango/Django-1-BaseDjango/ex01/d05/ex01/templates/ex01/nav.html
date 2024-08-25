@@ -1,0 +1,9 @@
+<!-- templates/ex01/nav.html 수정본 -->
+{% load static %}
+<nav>
+  <ul>
+    <li><a href="{% url 'django_intro' %}">Django 소개</a></li>
+    <li><a href="{% url 'display_page' %}">정적 페이지의 표시 과정</a></li>
+    <li><a href="{% url 'template_engine' %}">템플릿 엔진</a></li>
+  </ul>
+</nav>

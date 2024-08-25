@@ -1,0 +1,14 @@
+{% extends 'ex10/base.html' %}
+
+{% block content %}
+    <h1>Search Results</h1>
+    {% if results %}
+        <ul>
+            {% for result in results %}
+                <li>{{ result }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nothing corresponding to your research</p>
+    {% endif %}
+{% endblock %}

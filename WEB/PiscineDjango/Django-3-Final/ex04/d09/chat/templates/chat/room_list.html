@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat Rooms</title>
+</head>
+<body>
+    <h1>Chat Rooms</h1>
+    {% if user.is_authenticated %}
+        <ul>
+            {% for room in rooms %}
+            <li><a href="{% url 'chat_room' room.name %}">{{ room.name }}</a></li>
+            {% endfor %}
+        </ul>
+        <!-- 채팅방 생성 버튼 추가 -->
+
+        <button onclick="location.href='{% url 'account' %}'">Account</button>
+        <button onclick="location.href='{% url 'create_chat_room' %}'">Create Room</button>
+    {% else %}
+        <p>Please <a href="{% url 'account' %}">login</a> to enter chat rooms.</p>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% extends 'publish/base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>{% trans "register" %}</title>
+</head>
+<body>
+    <h1>{% trans "register" %}</h1>
+    {% if user.is_authenticated %}
+        <p>{% trans "you are already logged in" %}</p>
+    {% else %}
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">{% trans "regist" %}</button>
+        </form>
+        <a href="{% url 'login' %}">{% trans "back to login page" %}</a>
+    {% endif %}
+</body>
+</html>
+{% endblock %}

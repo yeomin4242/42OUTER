@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Chat Room - {{ room_name }}</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h2>{{ room_name }}</h2>
+    <textarea id="chat-log" cols="100" rows="20" readonly></textarea><br>
+    <input id="chat-message-input" type="text" size="100"><br>
+    <input id="chat-message-submit" type="button" value="Send">
+    {{ room_name|json_script:"room-name" }}
+    <script>
+        const roomName = JSON.parse(document.getElementById('room-name').textContent);
+        const userName = "{{ user.username }}"; // Django template to get the username
+
+        const wsStart = window.location.protocol === "https:" ? "wss://" : "ws://";
+        const chatSocket = new WebSocket(
+            `${wsStart}${window.location.host}/ws/chat/${roomName}/`
+        );
+        
+        chatSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            if (data.messages) {
+                // 여러 메시지를 포함하고 있는 경우 (예: 채팅방 입장 시)
+                data.messages.forEach(function(message) {
+                    $('#chat-log').val(function(index, value) {
+                        return value + (message +'\n'); // 메시지를 추가합니다.
+                    });
+                });
+            } else {
+                // 단일 메시지 처리
+                $('#chat-log').val(function(index, value) {
+                    return value + (data.message +'\n'); // 메시지를 추가합니다.
+                });
+            }
+            $('#chat-log').scrollTop($('#chat-log')[0].scrollHeight); // 스크롤을 맨 아래로 이동합니다.
+        };
+
+        chatSocket.onclose = function(e) {
+            console.error('Chat socket closed unexpectedly');
+            window.location.href = '/chat/room_list/'
+        };
+
+        $('#chat-message-input').focus();
+        $(document).on('keyup', '#chat-message-input', function(e) {
+            if (e.keyCode === 13) {  // enter, return
+                $('#chat-message-submit').click();
+            }
+        });
+
+        $('#chat-message-submit').on('click', function(e) {
+            const message = $('#chat-message-input').val();
+            chatSocket.send(JSON.stringify({
+                'message': message
+            }));
+            $('#chat-message-input').val('');
+        });
+    </script>
+</body>
+</html>

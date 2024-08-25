@@ -1,0 +1,15 @@
+<!-- FILEPATH: /Users/min-yeongjae/djangoPiscine/SQL/ex04/templates/ex04/remove.html -->
+
+{% if movies %}
+<form method="POST" action="">
+  {% csrf_token %}
+  <label for="title">Film Title:</label>
+  <select name="title" id="title">
+    {% for movie in movies %}
+    <option value="{{ movie.0 }}">{{ movie.0 }}</option>
+    {% endfor %}
+  </select>
+  <br />
+  <input type="submit" value="Remove" />
+</form>
+{% else %} No data available {% endif %}

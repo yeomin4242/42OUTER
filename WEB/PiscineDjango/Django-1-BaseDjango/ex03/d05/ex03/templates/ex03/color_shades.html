@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- 페이지 제목 설정 -->
+    <title>Color Shades</title>
+    <style>
+      /* 테이블의 셀과 헤더의 너비와 높이를 설정 */
+      td,
+      th {
+        width: 80px;
+        height: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <!-- 테이블 헤더 생성 -->
+      <tr>
+        <!-- 컨텍스트에서 전달된 colors를 순회하여 각 색상의 이름을 테이블 헤더로 출력 -->
+        {% for color in colors %}
+        <!-- capfirst 필터를 사용하여 색상 이름의 첫 글자를 대문자로 변환 -->
+        <th>{{ color|capfirst }}</th>
+        {% endfor %}
+      </tr>
+      <!-- 컨텍스트에서 전달된 color_rows를 순회하여 각 색상의 그림자를 행으로 출력 -->
+      {% for row in color_rows %}
+      <tr>
+        <!-- 각 행에 대해 RGB 값을 가지는 각 셀 생성 -->
+        {% for rgb in row %}
+        <!-- style 속성을 사용하여 각 셀의 배경색을 설정;
+             rgb.0, rgb.1, rgb.2를 사용하여 RGB 값을 각각 액세스 -->
+        <td
+          style="background-color: rgb({{ rgb.0 }}, {{ rgb.1 }}, {{ rgb.2 }});"
+        ></td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>

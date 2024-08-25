@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>publish</title>
+</head>
+<body>
+    <h1>new article publish</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">publish</button>
+    </form>
+    <a href="{% url 'publications' %}">back to publication list</a>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!-- FILEPATH: /Users/min-yeongjae/djangoPiscine/SQL/ex04/templates/ex04/remove.html -->
+
+{% if movies %}
+<form method="POST" action="">
+  {% csrf_token %}
+  <label for="title">Film Title:</label>
+  <select name="title" id="title">
+    {% for movie in movies %}
+    <option value="{{ movie.0 }}">{{ movie.0 }}</option>
+    {% endfor %}
+  </select>
+  <br />
+  <label for="opening_crawl">Opening Crawl:</label>
+  <input type="text" name="opening_crawl" id="opening_crawl" required />
+  <br />
+  <input type="submit" value="Submit" />
+</form>
+{% else %} No data available {% endif %}

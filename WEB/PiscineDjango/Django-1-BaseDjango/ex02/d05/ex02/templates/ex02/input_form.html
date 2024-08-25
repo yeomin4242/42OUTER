@@ -1,0 +1,22 @@
+<!-- ex02/templates/ex02/input_form.html -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Input Form</title>
+  </head>
+  <body>
+    <h1>Input Form</h1>
+    <form method="post">
+      {% csrf_token %} {{ form }}
+      <button type="submit">Submit</button>
+    </form>
+
+    <h2>Input History</h2>
+    <ul>
+      {% for entry in history %}
+      <li>{{ entry }}</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>

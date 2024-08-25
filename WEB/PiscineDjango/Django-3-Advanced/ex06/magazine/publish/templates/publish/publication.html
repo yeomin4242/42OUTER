@@ -1,0 +1,42 @@
+{% extends 'publish/base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+    <h1>{% trans "article list" %}</h1>
+    <!-- 로그인 상태에 따른 버튼 표시 -->
+    {% if user.is_authenticated %}
+    <table>
+        <thead>
+            <tr>
+                <th>{% trans "title" %}</th>
+                <th>{% trans "author" %}</th>
+                <th>{% trans "created" %}</th>
+                <th>{% trans "synopsis" %}</th>
+                <th>{% trans "content" %}</th>
+                <th>{% trans "view details" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for article in object_list %}
+                <tr>
+                    <td>{{ article.title }}</td>
+                    <td>{{ article.author }}</td>
+                    <td>{{ article.created|date:"Y-m-d H:i" }}</td>
+                    <td>{{ article.synopsis|truncatechars:20 }}</td>
+                    <td>{{ article.content|truncatechars:20 }}</td>
+                    {% if user.is_authenticated %}
+                        <td><a href="{% url 'article_detail' article.pk %}">{% trans "View Details" %}</a></td>
+                    {% endif %}
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="6">{% trans "no articles" %}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>{% trans "need to login" %}</p>
+    {% endif %}
+{% endblock %}

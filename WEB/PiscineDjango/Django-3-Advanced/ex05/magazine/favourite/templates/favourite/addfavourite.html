@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>{% trans "Add Favourite" %}</title>
+</head>
+<body>
+    <h1>{% trans "add favourite" %}</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">{% trans "add" %}</button>
+    </form>
+</body>
+</html>
+{% endblock %}

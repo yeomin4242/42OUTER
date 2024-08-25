@@ -1,0 +1,11 @@
+{% extends 'publish/base.html' %}
+
+{% block content %}
+    <h1>new article publish</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">publish</button>
+    </form>
+    <a href="{% url 'publications' %}">back to publication list</a>
+{% endblock %}

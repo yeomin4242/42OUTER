@@ -1,0 +1,20 @@
+{% extends 'publish/base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>register</title>
+</head>
+<body>
+    <h1>register</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">regist</button>
+    </form>
+    <a href="{% url 'login' %}">back to login page</a>
+</body>
+</html>
+{% endblock %}

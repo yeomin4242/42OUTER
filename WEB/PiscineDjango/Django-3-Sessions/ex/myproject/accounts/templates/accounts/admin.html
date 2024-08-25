@@ -1,0 +1,79 @@
+{% extends 'accounts/base.html' %}
+
+{% block content %}
+<h2>Admin Page</h2>
+
+{% if user.is_superuser %}
+<div>
+    <h3>Delete Authority Setting</h3>
+    <form method="post" onsubmit="return setDeleteAction(this);">
+        {% csrf_token %}
+        <label for="user_select">User Select:</label>
+        <select name="user_select" id="user_select">
+            {% for user in users %}
+            <option value="{{ user.id }}">{{ user.username }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="tip_select">Tip Select:</label>
+        <select name="tip_select" id="tip_select">
+            {% for tip in tips %}
+            <option value="{{ tip.id }}">{{ tip }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="has_permission">Delete Authority Setting:</label>
+        <input type="checkbox" name="has_permission" id="has_permission">
+        
+        <button type="submit">Apply</button>
+    </form>
+</div>
+<div>
+    <h3>Downvote Authority Setting</h3>
+    <form method="post" onsubmit="return setDownvoteAction(this);">
+        {% csrf_token %}
+        <label for="user_select">User Select:</label>
+        <select name="user_select" id="user_select">
+            {% for user in users %}
+            <option value="{{ user.id }}">{{ user.username }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="tip_select">Tip Select:</label>
+        <select name="tip_select" id="tip_select">
+            {% for tip in tips %}
+            <option value="{{ tip.id }}">{{ tip }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="has_permission">Downvote Authority Setting:</label>
+        <input type="checkbox" name="has_permission" id="has_permission">
+        
+        <button type="submit">Apply</button>
+{% else %}
+<p>This Page can access only superuser.</p>
+{% endif %}
+
+<script>
+function setDeleteAction(form) {
+    var userId = document.getElementById('user_select').value;
+    var tipId = document.getElementById('tip_select').value;
+    // userId와 tipId를 포함한 올바른 URL 설정
+    form.action = `/accounts/admin/delete/${userId}/${tipId}/`;
+    form.submit(); // 폼 제출
+    return false; // 폼의 기본 제출 동작 방지
+}
+</script>
+
+<script>
+    function setDownvoteAction(form) {
+        var userId = document.getElementById('user_select').value;
+        var tipId = document.getElementById('tip_select').value;
+        // userId와 tipId를 포함한 올바른 URL 설정
+        form.action = `/accounts/admin/downvote/${userId}/${tipId}/`;
+        form.submit(); // 폼 제출
+        return false; // 폼의 기본 제출 동작 방지
+    }
+    </script>
+
+{% endblock %}

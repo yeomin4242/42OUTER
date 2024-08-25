@@ -1,0 +1,84 @@
+[
+    {
+        "model": "auth.user",
+        "pk": 1,
+        "fields": {
+            "username": "yeomin",
+            "password": "password1",
+            "email": "user1@example.com"
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 2,
+        "fields": {
+            "username": "user2",
+            "password": "password2",
+            "email": "user2@example.com"
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 3,
+        "fields": {
+            "username": "user3",
+            "password": "password3",
+            "email": "user3@example.com"
+        }
+    },
+    {
+        "model": "ex00.article",
+        "pk": 1,
+        "fields": {
+            "title": "Article 1",
+            "author": 1,
+            "created": "2024-04-24T12:00:00Z",
+            "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "content": "Full lorem ipsum text for Article 1."
+        }
+    },
+    {
+        "model": "ex00.article",
+        "pk": 2,
+        "fields": {
+            "title": "Article 2",
+            "author": 1,
+            "created": "2024-04-25T12:00:00Z",
+            "synopsis": "Pellentesque habitant morbi tristique.",
+            "content": "Full lorem ipsum text for Article 2."
+        }
+    },
+    {
+        "model": "ex00.article",
+        "pk": 3,
+        "fields": {
+            "title": "Article 3",
+            "author": 2,
+            "created": "2024-04-26T12:00:00Z",
+            "synopsis": "Senectus et netus et malesuada fames.",
+            "content": "Full lorem ipsum text for Article 3."
+        }
+    },
+    {
+        "model": "ex00.article",
+        "pk": 4,
+        "fields": {
+            "title": "Article 4",
+            "author": 2,
+            "created": "2024-04-27T12:00:00Z",
+            "synopsis": "Ac turpis egestas integer eget aliquet.",
+            "content": "Full lorem ipsum text for Article 4."
+        }
+    },
+    {
+        "model": "ex00.article",
+        "pk": 5,
+        "fields": {
+            "title": "Article 5",
+            "author": 3,
+            "created": "2024-04-28T12:00:00Z",
+            "synopsis": "Nibh cras pulvinar mattis nunc.",
+            "content": "Full lorem ipsum text for Article 5."
+        }
+    }
+]

@@ -1,0 +1,28 @@
+{% extends 'publish/base.html' %}
+{% load i18n %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ article.title }}</title>
+</head>
+<body>
+    <h1>{{ article.title }}</h1>
+    <p>author: {{ article.author }}</p>
+    <p>created: {{ article.created }}</p>
+    <p>synopsis: {{ article.synopsis }}</p>
+    <p>content: {{ article.content }}</p>
+
+    <!-- 즐겨찾기 추가 폼 -->
+    <form action="{% url 'add_to_favourite' article.id %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="article_id" value="{{ article.id }}">
+        <button type="submit">{% trans "add favourite" %}</button>
+    </form>
+
+    <a href="{% url 'publications' %}">{% trans "back to publications list" %}</a>
+</body>
+</html>
+{% endblock %}
